@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>promise</title>
+</head>
+<body>
+
+
+  <script>
+    
+    // let p1 = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     resolve('done');
+    //   }, 3000);
+    // });
+
+    // p1.then(result => {
+    //   alert(`result => ${result}`);
+    // });
+
+    // let p2 = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     reject('failed');
+    //   }, 1000);
+    // });
+
+    // p2.then(result => {
+    //   alert(`result => ${result}`);
+    // }).catch(err => {
+    //   alert(`err => ${err}`);
+    // });
+
+    let task1 = () => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('resolve1');
+        }, 1000);
+      });
+    };
+
+    let task2 = () => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('resolve2');
+        }, 1000);
+      });
+    };
+
+    let task3 = () => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('resolve3');
+        }, 1000);
+      });
+    };
+
+    Promise.all([
+      task1(),
+      task2(),
+      task3()
+    ]).then(result => {
+      alert(`all_done => ${result}`);
+    }, err => {
+      alert(`anyone_error => ${err}`);
+    });
+
+
+    // task1().then(result => {
+    //   alert(`task1 => ${result}`);
+    //   return task2()
+    // }, err => {
+    //   alert(`task1_err => ${err}`);
+    //   return task2()
+    // }).then(result => {
+    //   alert(`task2 => ${result}`);
+    //   return task3()
+    // }, err => {
+    //   alert(`task2_err => ${err}`);
+    //   return task3()
+    // }).then(result => {
+    //   alert(`task3 => ${result}`);
+    //   done()
+    // }, err => {
+    //   alert(`task3_err => ${err}`);
+    //   done()
+    // });
+    
+    // function done() {
+    //   alert('done');
+    // }
+
+  </script>
+
+
+</body>
+</html>
